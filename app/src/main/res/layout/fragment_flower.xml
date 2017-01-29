@@ -5,11 +5,13 @@
     android:layout_gravity="center"
     tools:context="group1.tcss450.uw.edu.fragmentslab.FlowerFragment"
     android:gravity="center">
+
     <ImageView
         android:id="@+id/shapeTopLeft"
         android:layout_width="wrap_content"
         android:layout_height="wrap_content"
         android:background="@drawable/petall"/>
+
     <ImageView
         android:id="@+id/shapeTopRight"
         android:layout_width="wrap_content"
@@ -23,6 +25,7 @@
         android:background="@drawable/petalr"
         android:id="@+id/shapeBottomLeft"
         android:layout_below="@id/shapeTopLeft"/>
+
     <ImageView
         android:id="@+id/shapeBottomRight"
         android:layout_width="wrap_content"
