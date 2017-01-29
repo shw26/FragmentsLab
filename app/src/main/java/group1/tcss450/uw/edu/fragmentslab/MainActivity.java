@@ -31,16 +31,25 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnF
 
         FlowerFragment flowerFragment;
 
-        flowerFragment = new FlowerFragment();
-        Bundle args = new Bundle();
-        args.putSerializable(flowerFragment.COLOR, color);
-        flowerFragment.setArguments(args);
-        FragmentTransaction transaction = getSupportFragmentManager()
-                .beginTransaction()
-                .replace(R.id.fragmentContainer, flowerFragment)
-                .addToBackStack(null);
+        flowerFragment = (FlowerFragment) getSupportFragmentManager().
+                findFragmentById(R.id.flower);
+        if(flowerFragment != null) {
+            flowerFragment.updateContent(color);
 
-        // Commit the transaction
-        transaction.commit();
+        } else {
+
+            flowerFragment = new FlowerFragment();
+            Bundle args = new Bundle();
+            args.putSerializable(flowerFragment.COLOR, color);
+            flowerFragment.setArguments(args);
+            FragmentTransaction transaction = getSupportFragmentManager()
+                    .beginTransaction()
+                    .replace(R.id.fragmentContainer, flowerFragment)
+                    .addToBackStack(null);
+
+            // Commit the transaction
+            transaction.commit();
+        }
     }
+
 }
