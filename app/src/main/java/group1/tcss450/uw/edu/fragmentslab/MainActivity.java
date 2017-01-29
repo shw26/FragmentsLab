@@ -1,6 +1,7 @@
 package group1.tcss450.uw.edu.fragmentslab;
 
 import android.graphics.Color;
+import android.support.v4.app.FragmentTransaction;
 import android.support.v7.app.AppCompatActivity;
 import android.os.Bundle;
 import android.util.Log;
@@ -20,10 +21,26 @@ public class MainActivity extends AppCompatActivity implements FirstFragment.OnF
         }
     }
 
+
+
     @Override
     public void onFragmentInteraction(int color) {
         Log.d("ACTIVITY", "Red: " + Color.red(color) +
                 " Green: " + Color.green(color) +
                 " Blue: " + Color.blue(color));
+
+        FlowerFragment flowerFragment;
+
+        flowerFragment = new FlowerFragment();
+        Bundle args = new Bundle();
+        args.putSerializable(flowerFragment.COLOR, color);
+        flowerFragment.setArguments(args);
+        FragmentTransaction transaction = getSupportFragmentManager()
+                .beginTransaction()
+                .replace(R.id.fragmentContainer, flowerFragment)
+                .addToBackStack(null);
+
+        // Commit the transaction
+        transaction.commit();
     }
 }
